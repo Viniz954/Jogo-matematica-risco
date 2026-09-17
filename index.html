@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Risco</title>
+  <link rel="shortcut icon" href="Images/favicon.ico">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <h1 class="titulo">Risco</h1>
+
+    <div class="mao">
+
+        <div class="carta opcoes" onclick="abrirMenu('configuracoes')">
+            <div class="conteudo-carta">
+                <div class="icone">⚙</div>
+                <div class="texto-carta">Opções</div>
+            </div>
+        </div>
+
+        <div class="carta jogar" onclick="jogar()">
+            <div class="conteudo-carta">
+                <div class="icone">▶</div>
+                <div class="texto-carta">Jogar</div>
+            </div>
+        </div>
+
+        <div class="carta creditos" onclick="abrirMenu('creditos')">
+            <div class="conteudo-carta">
+                <div class="icone">?</div>
+                <div class="texto-carta">Créditos</div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="opcoes-jogo">
+
+        <div class="opcao-jogo"
+             data-nome="Iniciar partida">
+            Iniciar partida
+        </div>
+
+        <div class="opcao-jogo"
+             data-nome="Regras"
+             data-conteudo="<h2>CLÁSSICO</h2><p>Neste modo, algumas cartas serão vermelhas e o restante verdes. As verdes dão pontos, enquanto as vermelhas fazem o jogador perder todos os pontos da rodada.
+
+O objetivo é escolher o máximo de verdes possível e evitar as vermelhas. Se o jogador pegar uma quantidade determinada de cartas vermelhas, perde o jogo.
+
+Ao final das rodadas, se tiver a quantidade exata de pontos necessária, vence. Caso contrário, morre.</p>">
+            Regras
+        </div>
+
+     <div class="opcao-jogo"
+     data-nome="Estatísticas"
+     data-tipo="estatisticas">
+    Estatísticas
+</div>
+
+    </div>
+
+    <!--  Laurinha do Patel AHAHAHAHAHHAH, EU NÃO AGUENTO MAIS  -->
+
+    <div class="nome-opcao" id="nomeOpcao">
+        Jogar
+    </div>
+
+    <div class="conteudo-opcao" id="conteudoOpcao">
+
+        <div class="configuracao-jogo" id="configuracaoJogo">
+
+            <div class="gamemodes">
+
+                <button class="gamemode ativo" data-modo="Original">
+                    Original
+                </button>
+
+                <button class="gamemode" data-modo="W.I.P">
+                    W.I.P
+                </button>
+
+            </div>
+
+            <div class="mode-desc" id="gamemodeDesc">
+                Modo original de Risco. Sete cartas boas e três cartas ruins,
+                com as cartas retiradas do baralho durante a partida.
+            </div>
+
+            <div class="configuracao-campo">
+
+                <label for="totalCartas">
+                    Total de cartas
+                </label>
+
+                <input type="number"
+                       id="totalCartas"
+                       min="2"
+                       value="10"
+                       max="20">
+
+            </div>
+
+            <div class="configuracao-campo">
+
+                <label for="badCards">
+                    Cartas Ruins
+                </label>
+
+                <input type="number"
+                       id="badCards"
+                       min="1"
+                       value="3">
+
+            </div>
+
+            <div class="configuracao-campo">
+
+                <label for="rodadas">
+                    Rodadas
+                </label>
+
+                <input type="number"
+                       id="rodadas"
+                       min="1"
+                       value="3"
+                       max="10">
+
+            </div>
+
+            <div class="configuracao-campo wip-only">
+
+                <label for="specialCards">
+                    Cartas Especiais
+                </label>
+
+                <input type="number"
+                       id="specialCards"
+                       min="1"
+                       value="3"
+                       max="3"
+                       disabled>
+
+            </div>
+
+            <button class="start" id="botaoIniciar" onclick="classico()">
+                Iniciar
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Créditos -->
+
+    <div class="menu" id="menu">
+
+        <div class="menu-conteudo" id="menuConteudo">
+
+        </div>
+
+    </div>
+
+    <button class="back" onclick="voltarMenu()">
+        ← Voltar
+    </button>
+
+    <div class="popup-b" id="aviso">
+
+        <div class="popup">
+
+            <h1>⚠️ AVISO</h1>
+
+            <p>
+                O jogo que você está prestes a ver foi feito
+                utilizando o estilo de programação
+                <span class="onthecoxascoding">
+                    OnTheCoxasCoding™
+                </span>.
+            </p>
+
+            <p>
+                Não nos responsabilizamos por quaisquer danos
+                ao seu psicológico.
+            </p>
+
+            <p>
+                Se algo der errado, provavelmente era parte
+                do projeto...
+            </p>
+
+            <p>
+                <strong>Ou não.</strong>
+            </p>
+
+            <button onclick="fecharAviso()">
+                Entendi... eu acho
+            </button>
+
+        </div>
+
+    </div>
+<script src="Scripts/estatisticas.js"></script>
+    <script src="Scripts/menu.js"></script>
+
+</body>
+</html>
