@@ -1,0 +1,400 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #171717;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.baralho {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    pointer-events: none;
+}
+
+.carta-jogo {
+    position: absolute;
+    width: 160px;
+    height: 240px;
+    left: 50%;
+    top: 50%;
+    background: #eeeeee;
+    color: #171717;
+    border: 4px solid #111;
+    border-radius: 18px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.carta-jogo.ruim {
+    background: #d32f2f;
+}
+
+.carta-jogo.boa {
+    background: #43a047;
+}
+
+.contador-rodadas {
+    position: fixed;
+    top: 25px;
+    left: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    z-index: 100;
+}
+
+.contador-vermelhas {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    z-index: 100;
+}
+
+.botao-round {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    padding: 14px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #eeeeee;
+    color: #171717;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+/* Hover só em dispositivos que realmente possuem hover */
+@media (hover: hover) {
+    .botao-round:hover {
+        transform: translateY(-4px);
+        background: #ffffff;
+    }
+}
+
+/* =========================
+   TELA DE DERROTA
+   ========================= */
+
+.tela-derrota {
+    background: #171717;
+    animation: escurecerTela 2.5s ease forwards;
+}
+
+.conteudo-derrota {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90vw, 600px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    opacity: 0;
+    animation: aparecerDerrota 0.5s ease 2.5s forwards;
+}
+
+.gif-derrota {
+    width: auto;
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.botoes-derrota {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botoes-derrota button {
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #eeeeee;
+    color: #171717;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+@media (hover: hover) {
+    .botoes-derrota button:hover {
+        transform: translateY(-4px);
+        background: #ffffff;
+    }
+}
+
+@keyframes escurecerTela {
+    0% {
+        background: #171717;
+    }
+
+    100% {
+        background: #000;
+    }
+}
+
+@keyframes aparecerDerrota {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 15px));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* =========================
+   TELA DE VITÓRIA
+   ========================= */
+
+.tela-vitoria {
+    background: #000;
+    animation: clarearTela 0.7s ease forwards;
+}
+
+.conteudo-vitoria {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90vw, 600px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    opacity: 0;
+    animation: aparecerVitoria 0.4s ease 0.7s forwards;
+}
+
+.conteudo-vitoria h1 {
+    font-size: 72px;
+    margin: 0;
+    text-align: center;
+}
+
+.conteudo-vitoria button {
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #eeeeee;
+    color: #171717;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+@media (hover: hover) {
+    .conteudo-vitoria button:hover {
+        transform: translateY(-4px);
+        background: #ffffff;
+    }
+}
+
+@keyframes clarearTela {
+    0% {
+        background: #000;
+    }
+
+    100% {
+        background: #fff;
+    }
+}
+
+@keyframes aparecerVitoria {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 15px));
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.tela-vitoria .conteudo-vitoria h1 {
+    color: #171717;
+}
+
+/* =====================================
+   RESPONSIVIDADE PARA CELULARES
+   ===================================== */
+
+@media (max-width: 600px) {
+
+    /* Cartas menores */
+    .carta-jogo {
+        width: 120px;
+        height: 180px;
+        border-width: 3px;
+        border-radius: 14px;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Contadores */
+    .contador-rodadas,
+    .contador-vermelhas {
+        top: 15px;
+        font-size: 22px;
+    }
+
+    .contador-rodadas {
+        left: 15px;
+    }
+
+    .contador-vermelhas {
+        right: 15px;
+    }
+
+    /* Botão */
+    .botao-round {
+        right: 15px;
+        bottom: 15px;
+        padding: 12px 18px;
+        font-size: 16px;
+        border-radius: 9px;
+    }
+
+    /* Derrota */
+    .conteudo-derrota {
+        width: 92vw;
+        gap: 20px;
+    }
+
+    .gif-derrota {
+        max-width: 92vw;
+        max-height: 45vh;
+    }
+
+    .botoes-derrota {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .botoes-derrota button {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    /* Vitória */
+    .conteudo-vitoria {
+        width: 92vw;
+        gap: 20px;
+    }
+
+    .conteudo-vitoria h1 {
+        font-size: clamp(42px, 14vw, 72px);
+    }
+
+    .conteudo-vitoria button {
+        padding: 12px 22px;
+        font-size: 16px;
+    }
+}
+
+/* Celulares bem pequenos */
+@media (max-width: 380px) {
+
+    .carta-jogo {
+        width: 105px;
+        height: 158px;
+        border-width: 3px;
+    }
+
+    .contador-rodadas,
+    .contador-vermelhas {
+        font-size: 19px;
+        top: 12px;
+    }
+
+    .contador-rodadas {
+        left: 12px;
+    }
+
+    .contador-vermelhas {
+        right: 12px;
+    }
+
+    .botao-round {
+        right: 12px;
+        bottom: 12px;
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+    .conteudo-vitoria h1 {
+        font-size: 38px;
+    }
+
+    .botoes-derrota button {
+        padding: 11px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Celular na horizontal */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .carta-jogo {
+        width: 90px;
+        height: 135px;
+    }
+
+    .contador-rodadas,
+    .contador-vermelhas {
+        top: 10px;
+        font-size: 18px;
+    }
+
+    .botao-round {
+        bottom: 10px;
+        right: 10px;
+        padding: 9px 14px;
+        font-size: 14px;
+    }
+
+    .gif-derrota {
+        max-height: 55vh;
+    }
+
+    .conteudo-derrota,
+    .conteudo-vitoria {
+        gap: 12px;
+    }
+}
